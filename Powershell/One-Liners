@@ -1,0 +1,7 @@
+<!--Powershell One-Liners-->
+
+<!--CMD-->
+
+<!--Forcefully kills task by taskname. use tasklist to find the tasks name.-->
+taskkill /f /fi "IMAGENAME eq <task>.exe"
+
