@@ -1,7 +1,20 @@
-<!--Powershell One-Liners-->
+<!--Powershell-->
+
+# Kills process by name or Id
+Stop-Process -Name "<nameOfProcess>" -Id <PID>
+
+# Shows saved Wi-Fi Profiles. Work with the word profile or profiles.
+netsh wlan show profiles
+
+# Deletes saved Wi-Fi Profiles. Can use wildcard *
+netsh wlan delete profile <profileName>
+
+# Shows Wi-Fi profile properties including cleartext Wi-Fi password.
+netsh wlan show profile name="<SSID>" key=clear
 
 <!--CMD-->
 
-<!--Forcefully kills task by taskname. use tasklist to find the tasks name.-->
+REM Forcefully kills task by taskname. use tasklist to find the tasks name
 taskkill /f /fi "IMAGENAME eq <task>.exe"
+
 
