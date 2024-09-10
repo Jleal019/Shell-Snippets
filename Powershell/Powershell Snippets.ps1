@@ -1,5 +1,19 @@
 <#
 ----------------------------------------------------
+Name: Clear Spoolers
+Description: Clears out the print spooler. Helpful if there are stuck print jobs.
+<!--Must be run as admin.--!>
+----------------------------------------------------
+#>
+
+net stop spooler
+
+Remove-Item "%systemroot%\System32\spool\printers\*" -Confirm
+
+net start spooler
+
+<#
+----------------------------------------------------
 Name: Blink NIC
 Description: Script that asks for the name of the NIC you would like to enable and 
 disable indefinitely. Useful if you're trying to track down a NIC port
