@@ -66,3 +66,53 @@ $days_User_Inactive = 90
 $stale_User_Time = (Get-Date).AddDays(-($days_User_Inactive))
 
 Get-ADUser -Filter {LastLogonDate -lt $stale_User_Time} -Properties Name,Enabled,LastLogonTimeStamp -ResultPageSize 3000 -ResultSetSize $null  | Select -Property Name,Enabled,@{N='LastLogon_Time';E={[DateTime]::FromFileTime($_.LastLogon)}} | Export-Csv -Path "$PSScriptRoot\StaleUsers.csv"
+
+<#
+----------------------------------------------------
+Name: Create Basic AD Users from CSV
+Description: Creates basic AD User objects from CSV. CSV must include First Name, Last Name, Department, and Username.
+<!--Must be run in Domain Controller.--!>
+----------------------------------------------------
+#>
+# Path to CSV with Employee Data. My example has 4 rows; First Name, Last Name, Department, and UserName
+$PathToCSV = "C:\Users\pditsupport\OneDrive - Sweetwater Police Department\Documents\Powershell\Employees.csv"
+
+# Domain you're using for emails.
+$emailDomain = "@domain.com"
+
+# Loads CSV in to custom object CSVEmployee
+$CSVEmployees = Import-Csv -Path $PathToCSV 
+
+foreach($employee in $CSVEmployees) {
+
+# Assigns variables in to 
+$firstName = $employee.'First Name'
+
+$lastName = $employee.'Last Name'
+
+$department = $employee.Department
+
+$userName = $employee.userName
+
+
+# Unblock the following snippet to get it running
+
+$newUser = @{
+
+Name = $userName
+
+DisplayName = "$($firstName) $($lastName)"
+
+Mail = "$($username)$($emailDomain)"
+
+Enabled = $false
+
+}
+
+# New-ADUser $newUser
+
+echo $newUser
+
+}
+
+
