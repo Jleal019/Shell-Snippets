@@ -12,7 +12,7 @@ Hope they help!
 I. [One-Liners](#one-liners)
 
 II. [Snippets](#snippets)
-<br>&nbsp; 1. [Clear Print Spoolers](#clear-print-spoolers)
+<br>&nbsp; 1. [Clear Print Spooler](#clear-print-spooler)
 <br>&nbsp; 2. [Blink NIC](#blink-nic)
 
 III. [Active Directory Snippets](#active-directory-snippets)
