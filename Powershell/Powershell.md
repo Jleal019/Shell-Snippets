@@ -23,12 +23,18 @@ III. [Active Directory Snippets](#active-directory-snippets)
 ---
 
 
-### Kills process by name or Id.
+### Kills process by name or Process Id.
 ```powershell
 Stop-Process -Name "<nameOfProcess>" -Id <PID>
 ```
 
-### Shows saved Wi-Fi Profiles. Work with the word profile or profiles.
+
+### Shows currently running processes. Similar to top in Linux. Use with <name> to display attributes of specific process.
+```powershell
+Get-Process <name>
+```
+
+### Shows saved Wi-Fi Profiles. Works with the word profile or profiles.
 ```cmd
 netsh wlan show profiles
 ```
@@ -45,7 +51,7 @@ netsh wlan delete profile <profileName>
 netsh wlan show profile name="<SSID>" key=clear
 ```
 
-### Exports Wi-Fi profile properties to file. With cleartext Wifi Password
+### Exports Wi-Fi profile properties to file. With cleartext Wifi password.
 ```cmd
 netsh wlan export profile name="<SSID>" folder="<filepath>" key=clear
 ```
