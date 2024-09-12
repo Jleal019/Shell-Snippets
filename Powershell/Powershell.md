@@ -45,7 +45,7 @@ netsh wlan delete profile <profileName>
 netsh wlan show profile name="<SSID>" key=clear
 ```
 
-### Exports Wi-Fi profile properties to file. With cleartext Wifi PAssword
+### Exports Wi-Fi profile properties to file. With cleartext Wifi Password
 ```cmd
 netsh wlan export profile name="<SSID>" folder="<filepath>" key=clear
 ```
