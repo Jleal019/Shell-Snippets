@@ -3,7 +3,7 @@
 ---
 The following are a collection of Powershell snippets and one-liners for your use. 
 
-All commands are Powershell-compatible  stated otherwise. 
+All commands are Powershell-compatible unless stated otherwise. 
 
 Hope they help!
 
@@ -33,6 +33,13 @@ Stop-Process -Name "<nameOfProcess>" -Id <PID>
 ```powershell
 Get-Process <name>
 ```
+
+
+### Kills process forcefully by name. Primarily a CMD command.
+```cmd
+taskkill /f /fi "IMAGENAME eq TraCS.exe"
+```
+
 
 ### Shows saved Wi-Fi Profiles. Works with the word profile or profiles.
 ```cmd
