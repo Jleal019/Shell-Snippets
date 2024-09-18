@@ -3,7 +3,7 @@
 ---
 The following are a collection of Powershell snippets and one-liners for your use. 
 
-All commands are Powershell-compatible unless stated otherwise. 
+All commands are Powershell and CMD-compatible unless stated otherwise. 
 
 Hope they help!
 
@@ -67,6 +67,12 @@ netsh wlan export profile name="<SSID>" folder="<filepath>" key=clear
 ### Change Time Zone. Can be done in CMD too.
 ```cmd
 tzutil /s "Time Zone"
+```
+
+
+### Change a local users password. use /add to create account
+```cmd
+net users <username> <password> </add>
 ```
 
 
