@@ -28,6 +28,11 @@ III. [Active Directory Snippets](#active-directory-snippets)
 Stop-Process -Name "<nameOfProcess>" -Id <PID>
 ```
 
+### Kills process using the kill command. I've had better results with this over Stop-Process.
+```powershell
+Get-Process | Where-Object {$_.Name -eq "<ProcessName>"} | kill
+```
+
 
 ### Shows currently running processes. Similar to top in Linux. Use with <name> to display attributes of specific process.
 ```powershell
@@ -37,7 +42,7 @@ Get-Process <name>
 
 ### Kills process forcefully by name. Primarily a CMD command.
 ```cmd
-taskkill /f /fi "IMAGENAME eq TraCS.exe"
+taskkill /f /fi "IMAGENAME eq <processName.exe>"
 ```
 
 
