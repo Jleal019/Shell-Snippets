@@ -93,7 +93,7 @@ Must be run as admin.
 ```powershell
 net stop spooler
 
-Remove-Item "%systemroot%\System32\spool\printers\*" -Confirm
+Remove-Item "C:\WINDOWS\system32\spool\PRINTERS\*" -Confirm
 
 net start spooler
 ```
@@ -181,7 +181,7 @@ Must be run on Domain Controller.
 
 ```powershell
 # Path to CSV with Employee Data. My example has 4 rows; First Name, Last Name, Department, and UserName
-$PathToCSV = "C:\Users\pditsupport\OneDrive - Sweetwater Police Department\Documents\Powershell\Employees.csv"
+$PathToCSV = "<PathToCSV>\Employees.csv"
 
 # Domain you're using for emails.
 $emailDomain = "@domain.com"
