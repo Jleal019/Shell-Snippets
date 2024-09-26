@@ -20,10 +20,14 @@ III. [Active Directory Snippets](#active-directory-snippets)
 <br>&nbsp; 2. [Stale AD Users](#stale-ad-users)
 
 IV. [Run](#run)
+<br>&nbsp; 1. [Windows Environment Path Variables](#windows-environment-path-variables)
+<br>&nbsp; 2. [Run Commands](#run-commands)
+<br>&nbsp; 3. [Microsoft Office Suite](#microsoft-office-suite)
+<br>&nbsp; 4. [Management Consoles](#management-consoles)
+<br>&nbsp; 5. [Control Panel Utilities](#control-panel-utilities)
 
 ## One-Liners
 ---
-
 
 ### Kills process by name or Process Id.
 ```powershell
@@ -226,130 +230,116 @@ echo $newUser
 ---
 This portion comes courtesy of user Joe Taylor from the [following StockExchange Post](https://superuser.com/questions/217504/is-there-a-list-of-windows-special-directories-shortcuts-like-temp) minor changes to the descriptionshave been made.
 
-
 ### Windows Environment Path Variables
-```
-*%AllUsersProfile%* - Open the All User's Profile C:\ProgramData
-*%AppData%* - Opens AppData folder C:\Users\{username}\AppData\Roaming
-*%CommonProgramFiles%* - C:\Program Files\Common Files
-*%CommonProgramFiles(x86)%* - C:\Program Files (x86)\Common Files
-*%HomeDrive%* - Opens your home drive C:\
-*%LocalAppData%* - Opens local AppData folder C:\Users\{username}\AppData\Local
-*%ProgramData%* - C:\ProgramData
-*%ProgramFiles%* - C:\Program Files or C:\Program Files (x86)
-*%ProgramFiles(x86)%* - C:\Program Files (x86)
-*%Public%* - C:\Users\Public
-*%SystemDrive%* - C:
-*%SystemRoot%* - Opens Windows folder C:\Windows
-*%Temp%* - Opens temporary file Folder C:\Users\{Username}\AppData\Local\Temp
-*%UserProfile%* - Opens your user's profile C:\Users\{username}
-*%AppData%\Microsoft\Windows\Start Menu\Programs\Startup* - Opens Windows 10 Startup location for program shortcuts
-```
+**%AllUsersProfile%** - Open the All User's Profile C:\ProgramData\ <br>
+**%AppData%** - Opens AppData folder C:\Users\{username}\AppData\Roaming <br>
+**%CommonProgramFiles%** - C:\Program Files\Common Files <br>
+**%CommonProgramFiles(x86)%** - C:\Program Files (x86)\Common Files <br>
+**%HomeDrive%** - Opens your home drive C:\ <br>
+**%LocalAppData%** - Opens local AppData folder C:\Users\{username}\AppData\Local <br>
+**%ProgramData%** - C:\ProgramData <br>
+**%ProgramFiles%** - C:\Program Files or C:\Program Files (x86) <br>
+**%ProgramFiles(x86)%** - C:\Program Files (x86) <br>
+**%Public%** - C:\Users\Public <br>
+**%SystemDrive%** - C: <br>
+**%SystemRoot%** - Opens Windows folder C:\Windows <br>
+**%Temp%** - Opens temporary file Folder C:\Users\{Username}\AppData\Local\Temp <br>
+**%UserProfile%** - Opens your user's profile C:\Users\{username} <br>
+**%AppData%\Microsoft\Windows\Start Menu\Programs\Startup** - Opens Windows 10 Startup location for program shortcuts <br>
 
-
-
-
-### Run commands
+### Run Commands
 You can run any of the following with the <kbd>Win<\kbd>+<kbd>R<\kbd>.
 
-```
-*Calc* - Calculator
-*Cfgwiz32* - ISDN Configuration Wizard
-*Charmap* - Character Map
-*Chkdisk* - Repair damaged files
-*Cleanmgr* - Cleans up hard drives
-*Clipbrd* - Windows Clipboard viewer
-*Cmd* - Opens a new Command Window (cmd.exe)
-*Control - Displays Control Panel
-*Dcomcnfg* - DCOM user security
-*Debug* - Assembly language programming tool
-*Defrag* - Defragmentation tool
-*Drwatson* - Records programs crash & snapshots
-*Dxdiag* - DirectX Diagnostic Utility
-*Explorer* - Windows Explorer
-*Fontview* - Graphical font viewer
-*Ftp* - ftp.exe program
-*Hostname* - Returns Computer's name
-*Ipconfig* - Displays IP configuration for all network adapters
-*Jview* - Microsoft Command-line Loader for Java classes
-*MMC* - Microsoft Management Console
-*Msconfig* - Configuration to edit startup files
-*Msinfo32* - Microsoft System Information Utility
-*Nbtstat* - Displays stats and current connections using NetBios over TCP/IP
-*Netstat* - Displays all active network connections
-*Nslookup* - Returns your local DNS server
-*Odbcad32* - ODBC Data Source Administrator
-*Ping* - Sends data to a specified host/IP
-*Regedit* - registry Editor
-*Regsvr32* - register/de-register DLL/OCX/ActiveX
-*Regwiz* - Registration wizard
-*Sfc /scannow* - System File Checker
-*Sndrec32* - Sound Recorder
-*Sndvol32* - Volume control for soundcard
-*Sysedit* - Edit system startup files (config.sys, autoexec.bat, win.ini, etc.)
-*Systeminfo* - display various system information in text console
-*Taskmgr* - Task manager
-*Telnet* - Telnet program
-*Taskkill* - kill processes using command line interface
-*Tskill* - reduced version of Taskkill from Windows XP Home
-*Tracert* - Traces and displays all paths required to reach an internet host
-*Winchat* - simple chat program for Windows networks
-*Winipcfg* - Displays IP configuration
+**Calc** - Calculator <br>
+**Cfgwiz32** - ISDN Configuration Wizard <br>
+**Charmap** - Character Map <br>
+**Chkdisk** - Repair damaged files <br>
+**Cleanmgr** - Cleans up hard drives <br>
+**Clipbrd** - Windows Clipboard viewer <br>
+**Cmd** - Opens a new Command Window (cmd.exe) <br>
+**Control** - Displays Control Panel <br>
+**Dcomcnfg** - DCOM user security <br>
+**Debug** - Assembly language programming tool <br>
+**Defrag** - Defragmentation tool <br>
+**Drwatson** - Records programs crash & snapshots <br>
+**Dxdiag** - DirectX Diagnostic Utility <br>
+**Explorer** - Windows Explorer <br>
+**Fontview** - Graphical font viewer <br>
+**Ftp** - ftp.exe program <br>
+**Hostname** - Returns Computer's name <br>
+**Ipconfig** - Displays IP configuration for all network adapters <br>
+**Jview** - Microsoft Command-line Loader for Java classes <br>
+**MMC** - Microsoft Management Console <br>
+**Msconfig** - Configuration to edit startup files <br>
+**Msinfo32** - Microsoft System Information Utility <br>
+**Nbtstat** - Displays stats and current connections using NetBios over TCP/IP <br>
+**Netstat** - Displays all active network connections <br>
+**Nslookup** - Returns your local DNS server <br>
+**Odbcad32** - ODBC Data Source Administrator <br>
+**Ping** - Sends data to a specified host/IP <br>
+**Regedit** - registry Editor <br>
+**Regsvr32** - register/de-register DLL/OCX/ActiveX <br>
+**Regwiz** - Registration wizard <br>
+**Sfc /scannow** - System File Checker <br>
+**Sndrec32** - Sound Recorder <br>
+**Sndvol32** - Volume control for soundcard <br>
+**Sysedit** - Edit system startup files (config.sys, autoexec.bat, win.ini, etc.) <br>
+**Systeminfo** - display various system information in text console <br>
+**Taskmgr** - Task manager <br>
+**Telnet** - Telnet program <br>
+**Taskkill** - kill processes using command line interface <br>
+**Tskill** - reduced version of Taskkill from Windows XP Home <br>
+**Tracert** - Traces and displays all paths required to reach an internet host <br>
+**Winchat** - simple chat program for Windows networks <br>
+**Winipcfg** - Displays IP configuration <br>
 
-### Microsoft Office suite
-*winword* - Microsoft Word
-*excel* - Microsoft Excel
-*powerpnt* - Microsoft PowerPoint
-*msaccess* - Microsoft Access
-*outlook* - Microsoft Outlook
-*ois* - Microsoft Picture Manager
-*winproj* - Microsoft Project
-```
-
+### Microsoft Office Suite
+**winword** - Microsoft Word <br>
+**excel** - Microsoft Excel <br>
+**powerpnt** - Microsoft PowerPoint <br>
+**msaccess** - Microsoft Access <br>
+**outlook** - Microsoft Outlook <br>
+**ois** - Microsoft Picture Manager <br>
+**winproj** - Microsoft Project <br>
 
 ### Management Consoles
-```
-*certmgr.msc* - Certificate Manager
-*ciadv.msc* - Indexing Service
-*compmgmt.msc* - Computer management
-*devmgmt.msc* - Device Manager
-*dfrg.msc* - Defragment
-*diskmgmt.msc* - Disk Management
-*fsmgmt.msc* - Folder Sharing Management
-*eventvwr.msc* - Event Viewer
-*gpedit.msc* - Group Policy (< XP Pro)
-*iis.msc* - Internet Information Services
-*lusrmgr.msc* - Local Users and Groups
-*mscorcfg.msc* - Net configurations
-*ntmsmgr.msc* - Removable Storage
-*perfmon.msc* - Performance Manager
-*secpol.msc* - Local Security Policy
-*services.msc* - System Services
-*wmimgmt.msc* - Windows Management
-```
+**certmgr.msc** - Certificate Manager <br>
+**ciadv.msc** - Indexing Service <br>
+**compmgmt.msc** - Computer management <br>
+**devmgmt.msc** - Device Manager <br>
+**dfrg.msc** - Defragment <br>
+**diskmgmt.msc** - Disk Management <br>
+**fsmgmt.msc** - Folder Sharing Management <br>
+**eventvwr.msc** - Event Viewer <br>
+**gpedit.msc** - Group Policy (< XP Pro) <br>
+**iis.msc** - Internet Information Services <br>
+**lusrmgr.msc** - Local Users and Groups <br>
+**mscorcfg.msc** - Net configurations <br>
+**ntmsmgr.msc** - Removable Storage <br>
+**perfmon.msc** - Performance Manager <br>
+**secpol.msc** - Local Security Policy <br>
+**services.msc** - System Services <br>
+**wmimgmt.msc** - Windows Management <br>
 
-
-### Control Panel utilities
-```
-*access.cpl* - Accessibility Options
-*hdwwiz.cpl* - Add New Hardware Wizard
-*appwiz.cpl* - Add/Remove Programs
-*timedate.cpl* - Date and Time Properties
-*desk.cpl* - Display Properties
-*inetcpl.cpl* - Internet Properties
-*joy.cpl* - Joystick Properties
-*main.cpl* keyboard - Keyboard Properties
-*main.cpl* - Mouse Properties
-*ncpa.cpl* - Network Connections
-*ncpl.cpl* - Network Properties
-*telephon.cpl* - Phone and Modem options
-*powercfg.cpl* - Power Management
-*intl.cpl* - Regional settings
-*mmsys.cpl* sounds - Sound Properties
-*mmsys.cpl* - Sounds and Audio Device Properties
-*sysdm.cpl* - System Properties. Useful if you want to change the domain or PC name.
-*nusrmgr.cpl* - User settings
-*firewall.cpl* - Firewall Settings (sp2)
-*wscui.cpl* - Security Center (sp2)
-*Wupdmgr* - Takes you to Microsoft Windows Update
-```
+### Control Panel Utilities
+**access.cpl** - Accessibility Options <br>
+**hdwwiz.cpl** - Add New Hardware Wizard <br>
+**appwiz.cpl** - Add/Remove Programs <br>
+**timedate.cpl** - Date and Time Properties <br>
+**desk.cpl** - Display Properties <br>
+**inetcpl.cpl** - Internet Properties <br>
+**joy.cpl** - Joystick Properties <br>
+**main.cpl** keyboard - Keyboard Properties <br>
+**main.cpl** - Mouse Properties <br>
+**ncpa.cpl** - Network Connections <br>
+**ncpl.cpl** - Network Properties <br>
+**telephon.cpl** - Phone and Modem options <br>
+**powercfg.cpl** - Power Management <br>
+**intl.cpl** - Regional settings <br>
+**mmsys.cpl** sounds - Sound Properties <br>
+**mmsys.cpl** - Sounds and Audio Device Properties <br>
+**sysdm.cpl** - System Properties. Useful if you want to change the domain or PC name. <br>
+**nusrmgr.cpl** - User settings <br>
+**firewall.cpl** - Firewall Settings (sp2) <br>
+**wscui.cpl** - Security Center (sp2) <br>
+**Wupdmgr** - Takes you to Microsoft Windows Update <br>
