@@ -228,7 +228,7 @@ echo $newUser
 
 ## Run
 ---
-This portion comes courtesy of user Joe Taylor from the [following StockExchange Post](https://superuser.com/questions/217504/is-there-a-list-of-windows-special-directories-shortcuts-like-temp) minor changes to the descriptionshave been made.
+This portion comes courtesy of user Joe Taylor from the [following StockExchange Post.](https://superuser.com/questions/217504/is-there-a-list-of-windows-special-directories-shortcuts-like-temp) Minor changes to the descriptions have been made.
 
 ### Windows Environment Path Variables
 **%AllUsersProfile%** - Open the All User's Profile C:\ProgramData\ <br>
