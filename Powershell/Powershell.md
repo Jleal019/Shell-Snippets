@@ -40,7 +40,7 @@ Get-Process | Where-Object {$_.Name -eq "<ProcessName>"} | kill
 ```
 
 
-### Shows currently running processes. Similar to top in Linux. Use with <name> to display attributes of specific process.
+### Shows currently running processes. Similar to top in Linux. Use with \<name\> to display attributes of specific process.
 ```powershell
 Get-Process <name>
 ```
