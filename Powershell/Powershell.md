@@ -113,7 +113,6 @@ on a switch.
 Hit Ctrl+C to exit.
 
 Must be run as admin.
-
 ```powershell
 # Defines function named blinkNic that takes $adapterName string argument.
 Function blinkNic([String]$adapterName)
@@ -178,8 +177,9 @@ $days_User_Inactive = 90
 $stale_User_Time = (Get-Date).AddDays(-($days_User_Inactive))
 
 Get-ADUser -Filter {LastLogonDate -lt $stale_User_Time} -Properties Name,Enabled,LastLogonTimeStamp -ResultPageSize 3000 -ResultSetSize $null  | Select -Property Name,Enabled,@{N='LastLogon_Time';E={[DateTime]::FromFileTime($_.LastLogon)}} | Export-Csv -Path "$PSScriptRoot\StaleUsers.csv"
+```
 
-```powershell
+
 ### Create Basic AD Users from CSV
 Description: Creates basic AD User objects from CSV. CSV must include First Name, Last Name, Department, and Username.
 
