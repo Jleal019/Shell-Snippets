@@ -18,6 +18,7 @@ II. [Snippets](#snippets)
 III. [Active Directory Snippets](#active-directory-snippets)
 <br>&nbsp; 1. [Stale AD Computers](#stale-ad-computers)
 <br>&nbsp; 2. [Stale AD Users](#stale-ad-users)
+<br>&nbsp; 3. [Hard match On-Prem user account to Entra](#hard-match-on-prem-user-account-to-entra)
 
 IV. [Run](#run)
 <br>&nbsp; 1. [Windows Environment Path Variables](#windows-environment-path-variables)
@@ -179,7 +180,7 @@ $stale_User_Time = (Get-Date).AddDays(-($days_User_Inactive))
 Get-ADUser -Filter {LastLogonDate -lt $stale_User_Time} -Properties Name,Enabled,LastLogonTimeStamp -ResultPageSize 3000 -ResultSetSize $null  | Select -Property Name,Enabled,@{N='LastLogon_Time';E={[DateTime]::FromFileTime($_.LastLogon)}} | Export-Csv -Path "$PSScriptRoot\StaleUsers.csv"
 ```
 
-
+---
 ### Create Basic AD Users from CSV
 Description: Creates basic AD User objects from CSV. CSV must include First Name, Last Name, Department, and Username.
 
@@ -224,6 +225,30 @@ echo $newUser
 
 }
 ```
+
+---
+### Hard match On-Prem user account to Entra
+```powershell
+# Will ask you for credentials to 
+# connect to Microsoft Online Service
+# Run commans in the DC that has the Cloud Sync Agent
+$Msolcred = Get-credential
+Connect-MsolService -Credential $MsolCred
+
+# Run the portion below
+# Get Local AD User GUID (Run these commands in the AD with Cloud Sync Agent)
+$userAccount="<user>"
+Get-ADUser $userAccount
+
+#Update User Names accordingly
+$guid =(get-aduser $userAccount).objectGUID
+$immutable =[System.convert]::ToBase64String($guid.tobytearray())
+$guid
+$immutable
+
+Set-MsolUser -UserPrincipalName $userAccount+"@<domain.com>" -ImmutableID $immutable
+```
+
 
 
 ## Run
