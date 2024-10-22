@@ -19,6 +19,7 @@ III. [Active Directory Snippets](#active-directory-snippets)
 <br>&nbsp; 1. [Stale AD Computers](#stale-ad-computers)
 <br>&nbsp; 2. [Stale AD Users](#stale-ad-users)
 <br>&nbsp; 3. [Hard match On-Prem user account to Entra](#hard-match-on-prem-user-account-to-entra)
+<br>&nbsp; 4. [Re-run AD-Agent Sync](#re-run-ad-agent-sync)
 
 IV. [Run](#run)
 <br>&nbsp; 1. [Windows Environment Path Variables](#windows-environment-path-variables)
@@ -229,26 +230,42 @@ echo $newUser
 ---
 ### Hard match On-Prem user account to Entra
 ```powershell
+# Run this first to install and import the following modules.
+Install-Module MSOnline
+Install-Module AzureAD
+Import-Module AzureAD
+Install-Module ExchangeOnlineManagement
+Import-Module ExchangeOnlineManagement
+
+# Next Run the portion below.
 # Will ask you for credentials to 
-# connect to Microsoft Online Service
-# Run commans in the DC that has the Cloud Sync Agent
+# connect to Microsoft Online Service.
+# Run commands in the DC that has the Cloud Sync Agent.
+Connect-ExchangeOnline
 $Msolcred = Get-credential
 Connect-MsolService -Credential $MsolCred
 
-# Run the portion below
-# Get Local AD User GUID (Run these commands in the AD with Cloud Sync Agent)
-$userAccount="<user>"
+# Run this part.
+# Get Local AD User GUID (Run these commands in the AD with Cloud Sync Agent).
+$userAccount="<username>"
 Get-ADUser $userAccount
 
-#Update User Names accordingly
+#Run this.
 $guid =(get-aduser $userAccount).objectGUID
 $immutable =[System.convert]::ToBase64String($guid.tobytearray())
 $guid
 $immutable
 
-Set-MsolUser -UserPrincipalName $userAccount+"@<domain.com>" -ImmutableID $immutable
+#Finally, run this line AFTER filling out the UPN portion.
+Set-MsolUser -UserPrincipalName <user@domain.com> -ImmutableID $immutable
 ```
 
+---
+### Re-run AD-Agent Sync
+```powershell
+Start-ADSyncSyncCycle -PolicyType initial
+```
+--
 
 
 ## Run
