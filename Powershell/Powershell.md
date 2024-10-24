@@ -230,6 +230,8 @@ echo $newUser
 ---
 ### Hard match On-Prem user account to Entra
 ```powershell
+# Must be run as admin. Use Powershell ISE for convenience.
+# Step 1
 # Run this first to install and import the following modules.
 Install-Module MSOnline
 Install-Module AzureAD
@@ -237,6 +239,7 @@ Import-Module AzureAD
 Install-Module ExchangeOnlineManagement
 Import-Module ExchangeOnlineManagement
 
+# Step 2
 # Next Run the portion below.
 # Will ask you for credentials to 
 # connect to Microsoft Online Service.
@@ -245,18 +248,21 @@ Connect-ExchangeOnline
 $Msolcred = Get-credential
 Connect-MsolService -Credential $MsolCred
 
+# Step 3
 # Run this part.
 # Get Local AD User GUID (Run these commands in the AD with Cloud Sync Agent).
 $userAccount="<username>"
 Get-ADUser $userAccount
 
-#Run this.
+# Step 4
+# Run this.
 $guid =(get-aduser $userAccount).objectGUID
 $immutable =[System.convert]::ToBase64String($guid.tobytearray())
 $guid
 $immutable
 
-#Finally, run this line AFTER filling out the UPN portion.
+# Step 5
+# Finally, run this line AFTER filling out the UPN portion.
 Set-MsolUser -UserPrincipalName <user@domain.com> -ImmutableID $immutable
 ```
 
