@@ -271,8 +271,9 @@ Set-MsolUser -UserPrincipalName <user@domain.com> -ImmutableID $immutable
 ```powershell
 Start-ADSyncSyncCycle -PolicyType initial
 ```
---
 
+
+---
 
 ## Run
 ---
