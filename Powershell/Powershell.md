@@ -14,6 +14,7 @@ I. [One-Liners](#one-liners)
 II. [Snippets](#snippets)
 <br>&nbsp; 1. [Clear Print Spooler](#clear-print-spooler)
 <br>&nbsp; 2. [Blink NIC](#blink-nic)
+<br>&nbsp; 3. [Create Monthly Folders](#create-monthly-folders)
 
 III. [Active Directory Snippets](#active-directory-snippets)
 <br>&nbsp; 1. [Stale AD Computers](#stale-ad-computers)
@@ -138,6 +139,28 @@ DO
 blinkNic($adapterName)
 } WHILE($true)
 ```
+
+
+---
+### Create monthly folders
+Description: Creates 12 folders for each month. Folder titles can be customized.
+
+Must be run as admin.
+
+```powershell
+Set-ExecutionPolicy Bypass
+
+foreach ($month in 1..12)
+{
+
+# For Testing
+Write-Host $month"-2025"
+
+New-Item -Path "." -Name $month"-2025" -ItemType Directory
+
+}
+```
+
 
 
 ---
