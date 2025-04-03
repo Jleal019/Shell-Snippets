@@ -21,6 +21,7 @@ III. [Active Directory Snippets](#active-directory-snippets)
 <br>&nbsp; 2. [Stale AD Users](#stale-ad-users)
 <br>&nbsp; 3. [Hard match On-Prem user account to Entra](#hard-match-on-prem-user-account-to-entra)
 <br>&nbsp; 4. [Re-run AD-Agent Sync](#re-run-ad-agent-sync)
+<br>&nbsp; 4. [Read a CSV](#read-a-csv)
 
 IV. [Run](#run)
 <br>&nbsp; 1. [Windows Environment Path Variables](#windows-environment-path-variables)
@@ -293,6 +294,17 @@ Set-MsolUser -UserPrincipalName <user@domain.com> -ImmutableID $immutable
 ### Re-run AD-Agent Sync
 ```powershell
 Start-ADSyncSyncCycle -PolicyType initial
+```
+
+### Read a CSV
+```powershell
+$file = Import-Csv "Path\to\CSV.csv"
+
+foreach ($item in $file) {
+
+    Write-Host $item
+
+}
 ```
 
 
