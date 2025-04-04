@@ -185,7 +185,7 @@ $days_PC_Inactive = 120
 # Converts $stale_PC_Time to $DaysInactive
 $stale_PC_Time = (Get-Date).AddDays(-($days_PC_Inactive))
 
-Get-ADComputer -Filter {LastLogonTimeStamp -lt $stale_PC_Time} -Properties Name,Enabled,LastLogon -ResultPageSize 1000 -ResultSetSize $null  | Select -Property Name,Enabled,@{N='LastLogon_Time';E={[DateTime]::FromFileTime($_.LastLogon)}} | Export-Csv -Path "$PSScriptRoot\StaleComputers.csv"
+Get-ADComputer -Filter {LastLogonTimeStamp -lt $stale_PC_Time} -Properties Name,Enabled,SamAccountName,LastLogon -ResultPageSize 1000 -ResultSetSize $null  | Select -Property Name,Enabled,SamAccountName,@{N='LastLogon_Time';E={[DateTime]::FromFileTime($_.LastLogon)}} | Export-Csv -Path "$PSScriptRoot\StaleComputers.csv"
 ```
 
 
@@ -202,7 +202,7 @@ $days_User_Inactive = 90
 
 $stale_User_Time = (Get-Date).AddDays(-($days_User_Inactive))
 
-Get-ADUser -Filter {LastLogonDate -lt $stale_User_Time} -Properties Name,Enabled,LastLogonTimeStamp -ResultPageSize 3000 -ResultSetSize $null  | Select -Property Name,Enabled,@{N='LastLogon_Time';E={[DateTime]::FromFileTime($_.LastLogon)}} | Export-Csv -Path "$PSScriptRoot\StaleUsers.csv"
+Get-ADUser -Filter {LastLogonDate -lt $stale_User_Time} -Properties Name,Enabled,SamAccountName,LastLogonTimeStamp -ResultPageSize 3000 -ResultSetSize $null  | Select -Property Name,Enabled,SamAccountName,@{N='LastLogon_Time';E={[DateTime]::FromFileTime($_.LastLogon)}} | Export-Csv -Path "$PSScriptRoot\StaleUsers.csv"
 ```
 
 ---
@@ -303,6 +303,8 @@ $file = Import-Csv "Path\to\CSV.csv"
 foreach ($item in $file) {
 
     Write-Host $item
+    # Or to Run Command such as Disable Account:
+    Disable-ADAccount -Identity $item
 
 }
 ```
