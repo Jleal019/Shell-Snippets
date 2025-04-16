@@ -1,5 +1,5 @@
 # Index
-1. [`Powershell`](#Powershell)
+1. [`Powershell`](/Powershell/)
 
 ## Powershell
 <p>
