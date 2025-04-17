@@ -22,6 +22,7 @@ III. [Active Directory Snippets](#active-directory-snippets)
 <br>&nbsp; 3. [Hard match On-Prem user account to Entra](#hard-match-on-prem-user-account-to-entra)
 <br>&nbsp; 4. [Re-run AD-Agent Sync](#re-run-ad-agent-sync)
 <br>&nbsp; 4. [Read a CSV](#read-a-csv)
+<br>&nbsp; 5. [Disable Computer Objects and Move to OU](#disable-computer-objects-and-move-to-ou)
 
 IV. [Run](#run)
 <br>&nbsp; 1. [Windows Environment Path Variables](#windows-environment-path-variables)
@@ -180,12 +181,19 @@ Must be run on Domain Controller.
 
 ```powershell
 # Number of days you want to search for computer inactivity
-$days_PC_Inactive = 120
+$days_PC_Inactive = 80
 
 # Converts $stale_PC_Time to $DaysInactive
+
 $stale_PC_Time = (Get-Date).AddDays(-($days_PC_Inactive))
 
-Get-ADComputer -Filter {LastLogonTimeStamp -lt $stale_PC_Time} -Properties Name,Enabled,SamAccountName,LastLogon -ResultPageSize 1000 -ResultSetSize $null  | Select -Property Name,Enabled,SamAccountName,@{N='LastLogon_Time';E={[DateTime]::FromFileTime($_.LastLogon)}} | Export-Csv -Path "$PSScriptRoot\StaleComputers.csv"
+$stalePCArray = @()
+
+# Filter to display the needed information. Note that it makes the CSV at the directory where the script is. Yes, I know it's a really complicated way to designate the directory. You can do it with .\ListOfPCs.csv
+$stalePCs = Get-ADComputer -Filter {LastLogonTimeStamp -lt $stale_PC_Time} -Properties Name,Enabled,SamAccountName,LastLogon -ResultPageSize 1000 -ResultSetSize $null  | Select -Property Name,Enabled,SamAccountName,@{N='LastLogon_Time';E={[DateTime]::FromFileTime($_.LastLogon)}} | Export-Csv -Path "$PSScriptRoot\StaleComputers.csv"
+
+$stalePCArray += $stalePCs
+
 ```
 
 
@@ -305,6 +313,23 @@ foreach ($item in $file) {
     Write-Host $item
     # Or to Run Command such as Disable Account:
     Disable-ADAccount -Identity $item
+
+}
+```
+
+### Disable Computer Objects and Move to OU
+```powershell
+# This will disable all accounts listed in the CSV.
+
+$file = Import-Csv "Path\To\CSV.csv"
+
+# For loop iterates through the file
+foreach ($item in $file) {
+
+    # Used for Troubleshooting
+    # Write-Host $item.SamAccountName
+    # Disables the Computer Object then uses -PassThru and pipe to send to  Move-ADObject
+    Disable-ADAccount -Identity $item.SamAccountName -PassThru | Move-ADObject -TargetPath "OU=FOR,DC=PC,DC=HERE"
 
 }
 ```
