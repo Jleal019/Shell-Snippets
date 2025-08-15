@@ -336,13 +336,15 @@ foreach ($item in $file) {
 ```
 ---
 ### Enable Bitlocker and Manually Upload Key to AD
+Description: This script can be left to run indefinitely with a scheduled task.
+
 ```powershell
 $CdriveStatus = Get-BitLockerVolume -MountPoint $env:SystemDrive
 if ($CdriveStatus.volumeStatus -eq 'FullyDecrypted') {
-    C:\Windows\System32\manage-bde.exe -on c: -recoverypassword -skiphardwaretest -adbackup
+    C:\Windows\System32\manage-bde.exe -on c: -recoverypassword -skiphardwaretest
 }
-elseif ($CdriveStatus.volumeStatus -ne 'FullDecrypted'{
-    Backup-BitLockerKeyProtector -MountPoint "C:" -KeyProtectorId (Get-BitLockerVolume -MountPoint "C:").KeyProtector[1].KeyProtectorId
+elseif ($CdriveStatus.volumeStatus -ne 'FullyDecrypted'){
+Backup-BitLockerKeyProtector -MountPoint "C:" -KeyProtectorId (Get-BitLockerVolume -MountPoint "C:").KeyProtector[1].KeyProtectorId
 }
 ```
 ---
