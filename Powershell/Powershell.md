@@ -23,6 +23,7 @@ III. [Active Directory Snippets](#active-directory-snippets)
 <br>&nbsp; 4. [Re-run AD-Agent Sync](#re-run-ad-agent-sync)
 <br>&nbsp; 4. [Read a CSV](#read-a-csv)
 <br>&nbsp; 5. [Disable Computer Objects and Move to OU](#disable-computer-objects-and-move-to-ou)
+<br>&nbsp; 6. [Enable Bitlocker and Manually Upload Key to AD](#enable-bitlocker-and-manually-upload-key-to-ad)
 
 IV. [Run](#run)
 <br>&nbsp; 1. [Windows Environment Path Variables](#windows-environment-path-variables)
@@ -333,8 +334,17 @@ foreach ($item in $file) {
 
 }
 ```
-
-
+---
+### Enable Bitlocker and Manually Upload Key to AD
+```powershell
+$CdriveStatus = Get-BitLockerVolume -MountPoint $env:SystemDrive
+if ($CdriveStatus.volumeStatus -eq 'FullyDecrypted') {
+    C:\Windows\System32\manage-bde.exe -on c: -recoverypassword -skiphardwaretest -adbackup
+}
+elseif ($CdriveStatus.volumeStatus -ne 'FullDecrypted'{
+    Backup-BitLockerKeyProtector -MountPoint "C:" -KeyProtectorId (Get-BitLockerVolume -MountPoint "C:").KeyProtector[1].KeyProtectorId
+}
+```
 ---
 
 ## Run
