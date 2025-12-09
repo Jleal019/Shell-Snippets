@@ -5,13 +5,22 @@ Fortinet notes and CLI.
 
 ## Table of Contents
 
-I. [Run Ping and Traceroute](#run-ping-and-traceroute)
+I. [CLI](#cli)
 
-II. [View routing table](#view-routing-table)
-
-III. [Change profile options of all managed switches](#Change-profile-options-of-all-managed-switches)
+II. [Notes](#notes)
 
 ---
+### CLI
+### View routing table
+```basic
+get router info routing-table <all/dst_ip>
+```
+
+### View which firewall policy matches traffic based off IP and port
+```basic
+diag firewall iprope lookup <src_ip> <src_port> <dst_ip> <dst_port> <protocol> <Source interface>
+```
+
 ### Run Ping and Traceroute
 ```basic
 exec ping <IP here>
@@ -19,11 +28,6 @@ exec ping <IP here>
 exec traceroute <IP here>
 
 exec traceroute-options <options should be entered one by one>
-```
-
-### View routing table
-```basic
-get router info routing-table all
 ```
 
 ### Change profile options of all managed switches
@@ -52,3 +56,5 @@ Verbose levels are as follows:
 6. print header and data from Ethernet of packets with interface name.
 
 [More details can be found here.](https://community.fortinet.com/t5/FortiGate/Troubleshooting-Tip-Using-the-FortiOS-built-in-packet-sniffer/ta-p/194222)
+
+### Notes
