@@ -15,6 +15,7 @@ II. [Snippets](#snippets)
 <br>&nbsp; 1. [Clear Print Spooler](#clear-print-spooler)
 <br>&nbsp; 2. [Blink NIC](#blink-nic)
 <br>&nbsp; 3. [Create Monthly Folders](#create-monthly-folders)
+<br>&nbsp; 4. [NTP Notes](#ntp-notes)
 
 III. [Active Directory Snippets](#active-directory-snippets)
 <br>&nbsp; 1. [Stale AD Computers](#stale-ad-computers)
@@ -164,7 +165,36 @@ New-Item -Path "." -Name $month"-2025" -ItemType Directory
 }
 ```
 
+### NTP Notes
+---
+### NTP/Time Keeping GPO steps
+Description: This describes how to set an NTP server through GPO. Note that the server with the PDC role is the time provider of the domain. 
 
+To configure time synchronization via Group Policy
+<ol>
+<li>Create a new GPO and open the GPO to Computer Settings -> Administrative Templates -> System -> Windows Time Service -> Time Providers -> Set Configure Windows NTP Client to Enabled.</li>
+<li>Configure the Type to NTP.</li>
+<li>Configure NTP Server to point to an IP address of a time server, followed by ,0x8, for example:  131.107.13.100,0x8</li>
+<li>In the Security Filtering pane of the Group Policy management console remove Authenticated users for the newly created policy and add the machine that holds the PDC Emulator role.</li>
+<li>Link the GPO to Domain Controllers OU.</li>
+</ol>
+
+The following is how to confirm whether your setings took effect. They can be run on both the client and NTP server.
+To see current configuration of the Windows Time service, use the following command in an elevated command prompt:
+
+```cmd
+w32tm /query /configuration
+```
+
+To see the current source for time synchronization, use the following command as admin:
+
+```cmd
+w32tm /query /source
+```
+
+Source links for the details above. These may break because that's how Microsoft is.:
+<br>[Configure the Root PDC with an Authoritative Time Source and Avoid a Widespread Time Skew](https://learn.microsoft.com/en-us/services-hub/unified/health/remediation-steps-ad/configure-the-root-pdc-with-an-authoritative-time-source-and-avoid-widespread-time-skew)<br>
+[Windows Time service tools and settings](https://learn.microsoft.com/en-us/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings?tabs=config)
 
 ---
 ## Active Directory Snippets
